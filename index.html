@@ -75,6 +75,7 @@
         </style>
     </noscript>
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <title>Document</title>
 </head>
 
@@ -102,30 +103,38 @@
             </ul>
         </nav>
     </amp-sidebar>
-    <!-- <amp-img
-        src="https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg"
-        width="1080" height="610" layout="responsive"></amp-img>
-
-        <amp-carousel width="300"
-        height=""
-        layout="responsive"
-        type="slides">
-        <amp-img src="https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg"
-          width="300"
-          height=""
-          layout="responsive"
-          alt=""></amp-img>
-        <amp-img src="https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg"
-          width="300"
-          height=""
-          layout="responsive"
-          alt=""></amp-img>
-        <amp-img src="https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg"
-          width="300"
-          height=""
-          layout="responsive"
-          alt=""></amp-img>
-      </amp-carousel> -->
+    <amp-state id="carousel">
+        <script type="application/json">
+            {
+                "selectedSlide": 0
+            }
+        </script>
+    </amp-state>
+    <amp-carousel on="slideChange:AMP.setState({carousel: {selectedSlide:event.index}})"
+        [slide]="carousel.selectedSlide" lightbox id="imageSlides" layout="responsive" width="412" height="309"
+        type="slides" loop>
+        <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheddar-chaser.jpg?1540228205366"
+            width="412" height="309" layout="responsive"></amp-img>
+        <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese.jpg?1540228223785"
+            width="412" height="309" layout="responsive"></amp-img>
+        <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fmouse.jpg?1540228223963" width="412"
+            height="309" layout="responsive"></amp-img>
+    </amp-carousel>
+    <amp-selector id="ampSelector" [selected]="carousel.selectedSlide"
+        on="select:AMP.setState({carousel: {selectedSlide:event.targetOption}})">
+        <amp-carousel layout="fixed-height" height="78" class="thumbnail-carousel">
+            <amp-img
+                src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheddar-chaser-thumb.jpg?1540228250623"
+                option="0" selected role="button" tabindex="1" width="96" height="72" layout="fixed"></amp-img>
+            <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fcheese-thumb.jpg?1540228249992"
+                option="1" role="button" tabindex="1" width="96" height="72" layout="fixed"></amp-img>
+            <amp-img src="https://cdn.glitch.com/d7f46a57-0ca4-4cca-ab0f-69068dec6631%2Fmouse-thumb.jpg?1540228249062"
+                option="2" role="button" tabindex="1" width="96" height="72" layout="fixed"></amp-img>
+        </amp-carousel>
+    </amp-selector>
+    <p [text]="’Slide ‘ + (carousel.selectedSlide + 1) + ‘ of 3’">
+        Slide 1 of 3
+    </p>
 </body>
 
 </html>
