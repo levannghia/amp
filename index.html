@@ -74,17 +74,39 @@
             }
         </style>
     </noscript>
-
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
     <title>Document</title>
 </head>
 
 <body>
-    <h1>Hello World!</h1>
-    <amp-img
+    <header class="headerbar">
+        <div class="navbar-trigger" role="button" tabindex="0" on="tap:sidebar1.toggle">☰</div>
+        <h2>Chico's Cheese Bicycles</h2>
+    </header>
+    <amp-sidebar class="sidebar" id="sidebar1" layout="nodisplay" side="left">
+        <div class="navbar-trigger" role="button" tabindex="0" on="tap:sidebar1.toggle">X</div>
+        <nav class="nav">
+            <ul class="label">
+                <li class="nav-item">
+                    <a href="#">Our Story</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Our Bikes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Latest Models</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </amp-sidebar>
+    <!-- <amp-img
         src="https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg"
         width="1080" height="610" layout="responsive"></amp-img>
 
-        <amp-carousel width=""
+        <amp-carousel width="300"
         height=""
         layout="responsive"
         type="slides">
@@ -103,7 +125,7 @@
           height=""
           layout="responsive"
           alt=""></amp-img>
-      </amp-carousel>
+      </amp-carousel> -->
 </body>
 
 </html>
